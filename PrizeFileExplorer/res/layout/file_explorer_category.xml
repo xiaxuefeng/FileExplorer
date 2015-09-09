@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/file_browse_frame"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical" >
+
+    <!-- path -->
+    <!-- PRIZE-modify the whole layout -hekeyi-2015-3-30-start -->
+
+    <FrameLayout
+        android:id="@+id/navigation_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/navigation_bar_height"
+        android:background="@drawable/secondary_title_background"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/padding_left_small"
+        android:paddingRight="@dimen/padding_right_small"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/current_path_view"
+            style="?android:attr/textAppearanceMedium"
+            android:layout_width="@dimen/current_path_view_width"
+            android:layout_height="@dimen/navigation_bar_height"
+            android:background="@drawable/category_arror"
+            android:ellipsize="start"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/margin_left_small"
+            android:singleLine="true"
+            android:textSize="@dimen/textsize_mid" />
+
+        <HorizontalScrollView
+            android:id="@+id/path_contain"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/navigation_bar_height"
+            android:scrollbars="none" >
+
+            <LinearLayout
+                android:id="@+id/navigation_path_list"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="horizontal" >
+            </LinearLayout>
+        </HorizontalScrollView>
+    </FrameLayout>
+    <!-- end path -->
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1" >
+
+        <ListView
+            android:id="@+id/file_path_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@null"
+            android:footerDividersEnabled="true"
+            android:headerDividersEnabled="true"
+            android:visibility="gone" />
+
+        <ListView
+            android:id="@+id/favorite_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@null"
+            android:footerDividersEnabled="true"
+            android:headerDividersEnabled="true"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/empty_view"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/empty_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="@string/no_file"
+                android:textColor="#e2e2e2"
+                android:textSize="@dimen/textsize_mid" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/sd_not_available_page"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/sd_not_available_img_margin_bottom"
+                android:src="@drawable/sd_not_available" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/enable_sd_card"
+                android:textSize="@dimen/textsize_small" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/category_page"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <!-- /*PRIZE-category layout -hekeyi-2015-4-1-start*/ -->
+
+            <LinearLayout
+                android:id="@+id/category_buttons"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/category_height"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dip"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:orientation="horizontal" >
+
+                    <LinearLayout
+                        android:id="@+id/category_music"
+                        style="@style/CategoryButtonStyle"
+                        android:background="@drawable/category_button_music" >
+
+                        <ImageView
+                            style="@style/CategoryButtonIconStyle"
+                            android:src="@drawable/category_icon_music" />
+
+                        <TextView
+                            style="@style/CategoryButtonTextStyle"
+                            android:text="@string/category_music" />
+
+                        <TextView
+                            android:id="@+id/category_music_count"
+                            style="@style/CategoryButtonCountTextStyle" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/category_video"
+                        style="@style/CategoryButtonStyle"
+                        android:background="@drawable/category_button_video" >
+
+                        <ImageView
+                            style="@style/CategoryButtonIconStyle"
+                            android:src="@drawable/category_icon_video" />
+
+                        <TextView
+                            style="@style/CategoryButtonTextStyle"
+                            android:text="@string/category_video" />
+
+                        <TextView
+                            android:id="@+id/category_video_count"
+                            style="@style/CategoryButtonCountTextStyle" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/category_picture"
+                        style="@style/CategoryButtonStyle"
+                        android:background="@drawable/category_button_picture" >
+
+                        <ImageView
+                            style="@style/CategoryButtonIconStyle"
+                            android:src="@drawable/category_icon_picture" />
+
+                        <TextView
+                            style="@style/CategoryButtonTextStyle"
+                            android:text="@string/category_picture" />
+
+                        <TextView
+                            android:id="@+id/category_picture_count"
+                            style="@style/CategoryButtonCountTextStyle" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dip"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:orientation="horizontal" >
+
+                    <LinearLayout
+                        android:id="@+id/category_apk"
+                        style="@style/CategoryButtonStyle"
+                        android:background="@drawable/category_button_apk" >
+
+                        <ImageView
+                            style="@style/CategoryButtonIconStyle"
+                            android:src="@drawable/category_icon_apk" />
+
+                        <TextView
+                            style="@style/CategoryButtonTextStyle"
+                            android:text="@string/category_apk" />
+
+                        <TextView
+                            android:id="@+id/category_apk_count"
+                            style="@style/CategoryButtonCountTextStyle" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/category_document"
+                        style="@style/CategoryButtonStyle"
+                        android:background="@drawable/category_button_doc" >
+
+                        <ImageView
+                            style="@style/CategoryButtonIconStyle"
+                            android:src="@drawable/category_icon_document" />
+
+                        <TextView
+                            style="@style/CategoryButtonTextStyle"
+                            android:text="@string/category_document" />
+
+                        <TextView
+                            android:id="@+id/category_document_count"
+                            style="@style/CategoryButtonCountTextStyle" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/category_favorite"
+                        style="@style/CategoryButtonStyle"
+                        android:background="@drawable/category_button_favorate" >
+
+                        <ImageView
+                            style="@style/CategoryButtonIconStyle"
+                            android:src="@drawable/category_icon_favorite" />
+
+                        <TextView
+                            style="@style/CategoryButtonTextStyle"
+                            android:text="@string/category_favorite" />
+
+                        <TextView
+                            android:id="@+id/category_favorite_count"
+                            style="@style/CategoryButtonCountTextStyle" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <!-- # RIZE-category layout -hekeyi-2015-4-1-end -->
+            <!-- category information -->
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="vertical" >
+
+                <!-- PRIZE-add LineraLayout ID for Click event-liguizeng-2015-4-9 -->
+
+                <LinearLayout
+                    android:id="@+id/phone_capacity_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/sd_line_height"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <!--
+                    <TextView android:id="@+id/sd_card_capacity"
+                        style="@style/InformationTextStyle"
+                        android:drawableLeft="@drawable/sd_card_icon" />
+
+                    <TextView android:id="@+id/sd_card_available"
+                        style="@style/InformationTextStyle"
+                        android:layout_marginLeft="10dip"
+                        android:drawableLeft="@drawable/sd_card_available_icon" />
+
+
+
+                    -->
+
+                    <TextView
+                        android:id="@+id/phone_capacity"
+                        style="@style/InformationTextStyle"
+                        android:layout_width="@dimen/sd_line_text_width"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/padding_left_large"
+                        android:text="@string/string_phone_capacity"
+                        android:textSize="@dimen/textsize_mid" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="right"
+                        android:orientation="vertical" >
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:minWidth="@dimen/sd_line_categorybar_contain_width"
+                            android:gravity="center"
+                            android:orientation="vertical" >
+
+                            <TextView
+                                android:id="@+id/sd_card_available"
+                                style="@style/InformationTextStyle"
+                                android:singleLine="true"
+                                android:textColor="#A6A6A6" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:minWidth="@dimen/sd_line_categorybar_contain_width"
+                            android:gravity="center"
+                            android:orientation="vertical" >
+
+                            <com.android.fileexplorer.CategoryBarSmall
+                                android:id="@+id/category_bar"
+                                android:layout_width="@dimen/sd_line_categorybar_width"
+                                android:layout_height="@dimen/sd_line_categorybar_height" >
+                            </com.android.fileexplorer.CategoryBarSmall>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_marginLeft="@dimen/padding_left_large"
+                    android:layout_marginRight="@dimen/padding_right_large"
+                    android:background="#ececec" />
+
+                <LinearLayout
+                    android:id="@+id/phone_sd_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/sd_line_height"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:visibility="gone" >
+
+                    <TextView
+                        android:id="@+id/phone_sd"
+                        style="@style/InformationTextStyle"
+                        android:layout_width="@dimen/sd_line_text_width"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/padding_left_large"
+                        android:text="@string/string_phone_sd"
+                        android:textSize="@dimen/textsize_mid" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="right"
+                        android:orientation="vertical" >
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:minWidth="@dimen/sd_line_categorybar_contain_width"
+                            android:gravity="center"
+                            android:orientation="vertical" >
+
+                            <TextView
+                                android:id="@+id/out_sd_card_available"
+                                style="@style/InformationTextStyle"
+                                android:singleLine="true"
+                                android:textColor="#A6A6A6" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:minWidth="@dimen/sd_line_categorybar_contain_width"
+                            android:gravity="center"
+                            android:orientation="vertical" >
+
+                            <com.android.fileexplorer.CategoryBarSmall
+                                android:id="@+id/sd_category_bar"
+                                android:layout_width="@dimen/sd_line_categorybar_width"
+                                android:layout_height="@dimen/sd_line_categorybar_height" >
+                            </com.android.fileexplorer.CategoryBarSmall>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/phone_sd_line_divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_marginLeft="@dimen/padding_left_large"
+                    android:layout_marginRight="@dimen/padding_right_large"
+                    android:background="#ececec" />
+                <!--
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dip"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="20dip"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/phone_clear"
+                        android:layout_width="420px"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/string_phone_clear"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text=">"
+                        android:textSize="18dp" />
+                </LinearLayout>
+
+
+                -->
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/sd_line_height"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/padding_left_large"
+                    android:visibility="gone" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/one_key" />
+
+                    <TextView
+                        android:id="@+id/phone_clear"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="@string/string_phone_clear"
+                        android:textSize="18dp" />
+
+                    <!--
+                         <ImageView  android:layout_width="30dp"
+				        android:layout_height="30dp"
+				        android:layout_alignParentRight="true"
+				        android:src="@drawable/category_clear_right"
+				        android:layout_marginTop="10dp"
+				        android:layout_marginRight="20dip"/>
+
+
+                    -->
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/category_legend_margin_top"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/padding_bottom_small"
+                        android:layout_marginLeft="@dimen/padding_left_large"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/category_legend_music"
+                            style="@style/CategoryLegendStyle"
+                            android:drawableLeft="@drawable/legend_music" />
+
+                        <TextView
+                            android:id="@+id/category_legend_video"
+                            style="@style/CategoryLegendStyle"
+                            android:drawableLeft="@drawable/legend_video"
+                            android:paddingLeft="@dimen/padding_left_huge" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/padding_bottom_small"
+                        android:layout_marginLeft="@dimen/padding_left_large"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/category_legend_picture"
+                            style="@style/CategoryLegendStyle"
+                            android:drawableLeft="@drawable/legend_picture" />
+
+                        <TextView
+                            android:id="@+id/category_legend_apk"
+                            style="@style/CategoryLegendStyle"
+                            android:drawableLeft="@drawable/legend_apk"
+                            android:paddingLeft="@dimen/padding_left_huge" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/padding_bottom_small"
+                        android:layout_marginLeft="@dimen/padding_left_large"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/category_legend_document"
+                            style="@style/CategoryLegendStyle"
+                            android:drawableLeft="@drawable/legend_document" />
+
+                        <TextView
+                            android:id="@+id/category_legend_other"
+                            style="@style/CategoryLegendStyle"
+                            android:drawableLeft="@drawable/legend_other"
+                            android:paddingLeft="@dimen/padding_left_huge" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_bottom_large"
+                    android:orientation="vertical" >
+
+                    <com.android.fileexplorer.CategoryBar
+                        android:id="@+id/multi_category_bar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/categorybar_large_height"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="@dimen/padding_bottom_small"
+                        android:layout_marginLeft="@dimen/padding_left_large"
+                        android:layout_marginRight="@dimen/padding_right_large" >
+                    </com.android.fileexplorer.CategoryBar>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/moving_operation_bar"
+        style="@style/BottomButtonBar"
+        android:visibility="gone" >
+
+        <Button
+            android:id="@+id/button_moving_confirm"
+            style="@style/BottomButton.Left"
+            android:text="@string/confirm" />
+
+        <Button
+            android:id="@+id/button_moving_cancel"
+            style="@style/BottomButton.Right"
+            android:text="@string/operation_cancel" />
+    </LinearLayout>
+    <!-- PRIZE-modify the whole layout -hekeyi-2015-3-31-end -->
+
+</LinearLayout>

@@ -1,0 +1,38 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Base application theme for API 14+. This theme completely replaces
+        AppBaseTheme from BOTH res/values/styles.xml and
+        res/values-v11/styles.xml on API 14+ devices.
+    -->
+    <!-- PRIZE-modify the ActionBar theme -hekeyi-2015-3-31-start -->
+	<style name="AppBaseTheme" parent="@android:style/Theme.Material.Light">
+	    <item name="android:actionBarStyle">@style/MyActionBar</item>
+	    <item name="android:actionBarDivider">@null</item>
+	    <item name="android:actionBarTabTextStyle">@style/TabTextStyle</item>
+	    <item name="android:actionBarTabStyle">@style/BarTabStyle</item>
+	    <item name="android:actionOverflowButtonStyle">@null</item>
+	    <item name="android:windowContentOverlay">@null</item>
+	</style>
+	<style name="AppBaseNoTitleTheme" parent="AppBaseTheme">
+	    <item name="android:windowNoTitle">true</item>
+	    <item name="android:windowBackground">@drawable/file_explorer_bg</item>
+	    <item name="android:colorPrimaryDark">#394652</item>
+	</style>
+	<!-- PRIZE-modify the ActionBar Color -liguizeng-2015-4-9 -->
+	<style name="MyActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
+	    <item name="android:backgroundStacked">#394652</item>
+	    <item name="android:background">#394652</item>
+	</style>
+	
+	<style name="TabTextStyle" parent="@android:style/Widget.Holo.ActionBar.TabText">
+	    <item name="android:textColor">@drawable/tab_background_select</item>
+	    <item name="android:textStyle">normal</item>
+       <item name="android:textSize">14sp</item>
+	</style>
+	
+	<style name="BarTabStyle" parent="@android:style/Widget.Holo.Light.ActionBar.TabView">
+	    <item name="android:background">@null</item>
+	</style>
+	<!-- # RIZE-modify the ActionBar theme -hekeyi-2015-4-1-end -->
+</resources>

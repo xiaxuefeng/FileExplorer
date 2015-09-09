@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingRight="@dimen/actionbar_right"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/title_category"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/button_press_ripple"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="right|center_vertical"
+        android:text="@string/tab_category"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/title_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/button_press_ripple"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:text="@string/tab_sd"
+        android:textSize="14sp" />
+    
+    <TextView
+        android:id="@+id/title_control"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/button_press_ripple"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="left|center_vertical"
+        android:text="@string/tab_remote"
+        android:textSize="14sp" />
+
+</LinearLayout>

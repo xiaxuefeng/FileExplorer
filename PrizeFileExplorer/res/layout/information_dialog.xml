@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:shrinkColumns="2"
+        android:layout_marginLeft="@dimen/padding_left_middle">
+        <TableRow>
+            <TextView
+                android:layout_column="1"
+                android:text="@string/file_info_location"
+                android:padding="@dimen/dialog_padding_left"
+                android:gravity="right"
+                android:textSize="@dimen/textsize_mid"
+                style="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/information_location"
+                android:padding="@dimen/dialog_padding_left"
+                android:textSize="@dimen/textsize_small"
+                style="?android:attr/textAppearanceSmall" />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_column="1"
+                android:text="@string/file_info_size"
+                android:padding="@dimen/dialog_padding_left"
+                android:gravity="right"
+                android:textSize="@dimen/textsize_mid"
+                style="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/information_size"
+                android:padding="@dimen/dialog_padding_left"
+                android:textSize="@dimen/textsize_small"
+                style="?android:attr/textAppearanceSmall" />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_column="1"
+                android:text="@string/file_info_modified"
+                android:padding="@dimen/dialog_padding_left"
+                android:gravity="right"
+                android:textSize="@dimen/textsize_mid"
+                style="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/information_modified"
+                android:padding="@dimen/dialog_padding_left"
+                android:textSize="@dimen/textsize_small"
+                style="?android:attr/textAppearanceSmall" />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_column="1"
+                android:text="@string/file_info_canread"
+                android:padding="@dimen/dialog_padding_left"
+                android:gravity="right"
+                android:textSize="@dimen/textsize_mid"
+                style="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/information_canread"
+                android:padding="@dimen/dialog_padding_left"
+                android:textSize="@dimen/textsize_small"
+                style="?android:attr/textAppearanceSmall" />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_column="1"
+                android:text="@string/file_info_canwrite"
+                android:padding="@dimen/dialog_padding_left"
+                android:gravity="right"
+                android:textSize="@dimen/textsize_mid"
+                style="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/information_canwrite"
+                android:padding="@dimen/dialog_padding_left"
+                android:textSize="@dimen/textsize_small"
+                style="?android:attr/textAppearanceSmall" />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_column="1"
+                android:text="@string/file_info_ishidden"
+                android:padding="@dimen/dialog_padding_left"
+                android:gravity="right"
+                android:textSize="@dimen/textsize_mid"
+                style="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/information_ishidden"
+                android:padding="@dimen/dialog_padding_left"
+                android:textSize="@dimen/textsize_small"
+                style="?android:attr/textAppearanceSmall" />
+        </TableRow>
+    </TableLayout>
+</ScrollView>
